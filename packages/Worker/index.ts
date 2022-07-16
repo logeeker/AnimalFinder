@@ -1,1 +1,4 @@
-console.log('Hello World from the worker')
+const getSciName = ()=>{
+  
+}
+
