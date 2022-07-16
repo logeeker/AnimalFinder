@@ -1,31 +1,34 @@
 const express = require('express')
 const fs = require('fs');
-const worker = new Worker('../Worker/index.ts')
 
 const app = express()
 export const port = 5555;
 const link = `https://localhost:${port}`
 let rtn=[];
-//get scientific name from input.json
+
 type sciName = {SciName:String}
+//get scientific name from input.json
+const inputData = JSON.parse(fs.readFileSync('./input.json',{encoding:'utf8', flag:'r'}));
 
 app.listen(port, () => {
   console.log(`listening on ${link}`)
 });
 
-const inputData = JSON.parse(fs.readFileSync('./input.json',{encoding:'utf8', flag:'r'}));
-const data=inputData.map(function(i:sciName){
-  console.log('sciNameObject',i)
-  //send scientific name one by one to worker
-  worker.postMessage(i)
+//send scientific name one by one to worker
+interface MyRequest extends Request {
+  SciName:String
+}
+interface MyResponse {
+  status: Number;
+  message: string;
+}
+app.post(`${link}/post`,(req: MyRequest, res: MyResponse)=>{
+  inputData.map(function(i:sciName){
+    req.SciName = i.SciName
+    
+  })
 })
+
+
 //get result from worker
-// worker.onmessage = function(e){
-//   console.log('result',e.data)
-//   console.log('result received from worker');
-//   if(e.data){
-//     app.get(link,(req,res)=>{
-//       let animalCommonName = req.
-//     })
-//   }
-// }
+
