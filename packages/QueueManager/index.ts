@@ -2,7 +2,7 @@ const fs = require('fs');
 import express,{ Request, Response } from 'express';
 
 const app = express();
-const port = 5555;
+const port = process.env.PORT;
 const link = `http://localhost:${port}`
 let rtn=[];
 
