@@ -44,8 +44,9 @@ const scrapeRelatedDataBySciName = async(name:string)=>{
   const page = await browser.newPage();
   //go to the page
   await page.goto(`https://www.wikipedia.org/${name}`)
-  let commonName = await page.evaluate(()=>document.querySelector('#firstHeading i'))
+  const commonName = await page.$('firstHeading i')
   console.log('commonName',commonName,'type',typeof commonName)
+  await browser.close()
 }
 
 
