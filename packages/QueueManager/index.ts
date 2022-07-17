@@ -11,11 +11,12 @@ type sciName = {SciName:String}
 const inputData = JSON.parse(fs.readFileSync('./input.json',{encoding:'utf8', flag:'r'}));
 
 //send scientific name one by one to worker
-
-app.post(`/sciname`,(req, res,next)=>{
-  inputData.map(function(i:sciName){
+inputData.map(function(i:sciName){
+  app.get('/',(req,res)=>{
+    return res.status(200).send(i)
   })
 })
+
 
 //get result from worker
 
