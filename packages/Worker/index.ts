@@ -2,10 +2,9 @@ const axios = require('axios');
 import { resolve } from 'path';
 import dotenv from 'dotenv';
 dotenv.config({ path: resolve(__dirname, "../../.env") });
-const puppeteer = require('puppeteer');
+import * as puppeteer from "puppeteer";
 
 let baseUrl = `http://localhost:${process.env.PORT}`
-let commonName=''
 
 const getSciNameLength = async():Promise<Number>=>{
   let data=0
@@ -39,6 +38,26 @@ getSciName()
  * @returns {Any {commonName:String,description:String,status:Number}}
  */
 const scrapeRelatedDataBySciName = async()=>{
+  let sciName = "Chlamydosaurus kingii"
+  interface result {
+    status: String;
+    name: String;
+    description:String
+  }
+
+  interface Animal {
+    SciName: string;
+    reuslt :result; 
+  }
+
+  let animalData: Animal = {
+    SciName:sciName ,
+    reuslt: {
+      status:'',
+      name:'',
+      description:''
+    }
+  }
   //launch browser
   const browser = await puppeteer.launch();
   //open new tab
@@ -49,17 +68,22 @@ const scrapeRelatedDataBySciName = async()=>{
   await page.type("#searchInput",'Chlamydosaurus kingii')
   await page.click("#search-form fieldset button")
   await page.waitForNavigation()
-  // commonName = await page.$eval("firstHeading i",el=>el.innerText as string)
+  //go to result page directly
   try {
-    const elemText = await page.$eval("#firstHeading > i", elem => elem.innerText)
-    console.log('element innerText:', elemText)
+    const commonName = await page.$eval('#firstHeading > i', e => e.textContent);
+    let description = await page.$eval('#mw-content-text > div.mw-parser-output > p:nth-child(4)', e => e.textContent);
+    animalData.reuslt.name = commonName? commonName:''
+    animalData.reuslt.description = description? description:''
   } catch(err){
     console.log(err)
   }
+  if(animalData.reuslt.description&& animalData.reuslt.name){
+    animalData.reuslt.status='ok'
+  }
+  console.log('animalData',animalData)
   await browser.close()
 }
 scrapeRelatedDataBySciName()
-console.log('commonName',commonName,'type',typeof commonName)
 
 
 
