@@ -7,6 +7,7 @@ dotenv.config({ path: resolve(__dirname, "../../.env") });
 const app = express();
 const port = process.env.PORT;
 const link = `http://localhost:${port}`
+console.log('link',link)
 let rtn=[];
 
 type sciName = {SciName:String}
@@ -15,7 +16,7 @@ const inputData = JSON.parse(fs.readFileSync('./input.json',{encoding:'utf8', fl
 
 // send scientific name one by one to worker
 inputData.map(function(i:sciName){
-  app.get('/',(req:Request,res:Response)=>{
+  app.get('/sciName',(req:Request,res:Response)=>{
     return res.status(200).send(i)
   })
 })
