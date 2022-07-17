@@ -16,7 +16,7 @@ const inputData = JSON.parse(fs.readFileSync('./input.json',{encoding:'utf8', fl
 
 // send scientific name one by one to worker
 inputData.map(function(i:sciName){
-  app.get('/sciName',(req:Request,res:Response)=>{
+  app.get('/',(req:Request,res:Response)=>{
     return res.status(200).send(i)
   })
 })

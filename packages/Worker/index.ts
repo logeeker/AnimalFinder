@@ -6,7 +6,7 @@ dotenv.config({ path: resolve(__dirname, "../../.env") });
 const getSciName = async()=>{
   let res;
   try {
-    res=await axios.get(`http://localhost:${process.env.PORT}/sciName`)
+    res=await axios.get(`http://localhost:${process.env.PORT}`)
   } catch (error) {
     throw new Error(`get sciName failed because ${error}`)
   }
