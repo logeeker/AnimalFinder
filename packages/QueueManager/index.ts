@@ -13,13 +13,16 @@ let rtn=[];
 type sciName = {SciName:String}
 //get scientific name from input.json
 const inputData = JSON.parse(fs.readFileSync('./input.json',{encoding:'utf8', flag:'r'}));
-
+const inputDataLength = inputData.length
 // send scientific name one by one to worker
-inputData.map(function(i:sciName){
-  app.get('/',(req:Request,res:Response)=>{
-    return res.status(200).send(i)
-  })
+app.get('/',(req:Request,res:Response)=>{
+  return res.status(200).json(inputDataLength)
 })
+
+app.get('/:index',(req:Request,res:Response)=>{
+  return res.status(200).json(inputData[req.params.index])
+})
+
 
 
 //get result from worker
