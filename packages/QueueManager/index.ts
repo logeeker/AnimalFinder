@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 const fs = require('fs');
 import express,{ Request, Response } from 'express';
 
