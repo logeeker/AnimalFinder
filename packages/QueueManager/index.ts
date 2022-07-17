@@ -5,7 +5,6 @@ import express,{ Request, Response } from 'express';
 
 const app = express();
 const port = process.env.PORT;
-console.log('port',port)
 const link = `http://localhost:${port}`
 let rtn=[];
 
