@@ -42,6 +42,7 @@ const getSciName = async():Promise<string>=>{
 
 const scrapeRelatedDataBySciName = async()=>{
   let sciName =await getSciName()
+  console.log('sciName',sciName)
   const browser = await puppeteer.launch();
   // //open new tab
   const page = await browser.newPage();

@@ -21,9 +21,6 @@ interface obj{
 }
 // send scientific name one by one to worker
 
-// let sentInput=inputData.find((el:obj)=>!el.hasSent);
-// inputData[inputData.indexOf(sentInput)].hasSent = true
-// console.log('sentInput',sentInput)
 app.get('/',(req:Request,res:Response)=>{
   let sentInput=inputData.find((el:obj)=>!el.hasSent);
   inputData[inputData.indexOf(sentInput)].hasSent = true
