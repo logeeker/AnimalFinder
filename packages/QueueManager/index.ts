@@ -9,7 +9,18 @@ app.use(express.json())
 const port = process.env.PORT;
 const link = `http://localhost:${port}`
 console.log('link',link)
-let rtn=[];
+interface result {
+  status: String;
+  name: String;
+  description:String
+}
+
+interface Animal {
+  SciName: string;
+  result :result; 
+}
+
+let rtn:Array<Animal>=[]
 
 
 //get scientific name from input.json
@@ -35,11 +46,12 @@ app.post('/',(req:Request,res:Response)=>{
   if(Object.values(data).length>0){
     rtn.push(data)
   }
+  console.log('rtn',rtn)
 })
 
 app.listen(port, () => {
   console.log(`listening on ${link}`)
 });
 
-
+console.log('rtn',rtn)
  
