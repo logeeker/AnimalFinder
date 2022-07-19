@@ -1,4 +1,4 @@
-const fs = require('fs');
+import {readFileSync} from "fs"
 import express,{ Request, Response } from 'express';
 import { resolve } from 'path';
 import dotenv from 'dotenv';
@@ -10,9 +10,9 @@ const port = process.env.PORT;
 const link = `http://localhost:${port}`
 console.log('link',link)
 interface result {
-  status: String;
-  name: String;
-  description:String
+  status: string;
+  name: string;
+  description:string
 }
 
 interface Animal {
@@ -20,20 +20,19 @@ interface Animal {
   result :result; 
 }
 
-let rtn:Array<Animal>=[]
+const rtn:Array<Animal>=[]
 
 
 //get scientific name from input.json
-const inputData = JSON.parse(fs.readFileSync('./input.json',{encoding:'utf8', flag:'r'}));
-const inputDataLength = inputData.length
+const inputData = JSON.parse(readFileSync('./input.json',{encoding:'utf8', flag:'r'}));
 interface obj{
   SciName:string,
-  hasSent:Boolean
+  hasSent:boolean
 }
 // send scientific name one by one to worker
 
 app.get('/',(req:Request,res:Response)=>{
-  let sentInput=inputData.find((el:obj)=>!el.hasSent);
+  const sentInput=inputData.find((el:obj)=>!el.hasSent);
   inputData[inputData.indexOf(sentInput)].hasSent = true
   console.log('sentInput',sentInput)
   res.status(200).send(sentInput)
@@ -42,11 +41,11 @@ app.get('/',(req:Request,res:Response)=>{
 //get result from worker
 app.post('/',(req:Request,res:Response)=>{
   console.log(req.body);
-  let data = req.body.animalData;
+  const data = req.body.animalData;
   if(Object.values(data).length>0){
     rtn.push(data)
   }
-  console.log('rtn',rtn)
+  res.status(200).send('ok')
 })
 
 app.listen(port, () => {
