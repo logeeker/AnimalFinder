@@ -4,11 +4,11 @@ import dotenv from 'dotenv';
 dotenv.config({ path: resolve(__dirname, "../../.env") });
 import * as puppeteer from "puppeteer";
 
-let sciName:string=''
+let sciName=''
 interface result {
-  status: String;
-  name: String;
-  description:String
+  status: string;
+  name: string;
+  description:string
 }
 
 interface Animal {
@@ -16,7 +16,7 @@ interface Animal {
   result :result; 
 }
 
-let animalData: Animal = {
+const animalData: Animal = {
   SciName:'',
   result: {
     status:'',
@@ -46,8 +46,8 @@ let isClose = true
  * @description scrape animalData by sciName
  * @returns {void} no return
  */
-const scrapeRelatedDataBySciName = async():Promise<Boolean>=>{
-  let sciName =await getSciName()
+const scrapeRelatedDataBySciName = async():Promise<boolean>=>{
+  const sciName =await getSciName()
   console.log('sciName',sciName)
   const browser = await puppeteer.launch();
   // //open new tab
@@ -84,8 +84,8 @@ const getResultDirectly = async(page:puppeteer.Page,name:string):Promise<void>=>
 
   const data = {status:'',name:'',description:''}
   try {
-    let commonName = await page.$eval('#firstHeading > i', e => e.textContent);
-    let description = await page.$eval('#mw-content-text > div.mw-parser-output > p:nth-child(4)', e => e.textContent);
+    const commonName = await page.$eval('#firstHeading > i', e => e.textContent);
+    const description = await page.$eval('#mw-content-text > div.mw-parser-output > p:nth-child(4)', e => e.textContent);
     data.name = commonName? commonName:''
     data.description = description? description:''
   } catch(err){
