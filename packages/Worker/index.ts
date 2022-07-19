@@ -1,7 +1,7 @@
-const axios = require('axios');
-import { resolve } from 'path';
 import dotenv from 'dotenv';
 dotenv.config({ path: resolve(__dirname, "../../.env") });
+import axios from "axios"
+import { resolve } from 'path';
 import * as puppeteer from "puppeteer";
 
 let sciName=''
@@ -62,7 +62,7 @@ const scrapeRelatedDataBySciName = async():Promise<boolean>=>{
   const pageContent = await page.content();
   const url = await page.url()
   if(pageContent.includes('#mw-content-text > div.searchresults > p.mw-search-nonefound')){
-    await resultNotFound(page)
+    await resultNotFound()
   }else if(pageContent.includes('#mw-content-text > div.searchdidyoumean')){
     await getResultAfterSpellCorrection(page,sciName)
   }else if(url.includes('search')){
@@ -120,7 +120,7 @@ const getResultAfterSpellCorrection = async(page:puppeteer.Page,name:string):Pro
   await getResultFromFirstLink(page,name)
 }
 
-const resultNotFound = async(page:puppeteer.Page):Promise<void>=>{
+const resultNotFound = async():Promise<void>=>{
   animalData.result.status = 'error'
   await axios({
     method: 'post',
