@@ -1,8 +1,8 @@
+import { resolve } from 'path';
 import dotenv from 'dotenv';
 dotenv.config({ path: resolve(__dirname, "../../.env") });
 import {readFileSync} from 'fs'
 import express,{ Request, Response } from 'express';
-import { resolve } from 'path';
 
 const app = express();
 app.use(express.json())

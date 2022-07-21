@@ -1,8 +1,8 @@
+import { resolve } from 'path';
 import dotenv from 'dotenv';
 dotenv.config({ path: resolve(__dirname, "../../.env") });
-import axios, { Axios, AxiosError } from "axios"
-import { resolve } from 'path';
-import {Page,launch} from "puppeteer";
+import axios, {AxiosError } from "axios"
+import {Page,launch,ElementHandle} from "puppeteer";
 
 let sciName=''
 interface result {
@@ -46,10 +46,10 @@ let isClose = true
  * @description scrape animalData by sciName
  * @returns {void} no return
  */
-const scrapeRelatedDataBySciName = async():Promise<boolean>=>{
+const scrapeRelatedDataBySciName = async()=>{
   const sciName =await getSciName()
   console.log('sciName',sciName)
-  const browser = await launch();
+  const browser = await launch({headless:false});
   // //open new tab
   const page = await browser.newPage();
   // //go to the page
@@ -58,27 +58,36 @@ const scrapeRelatedDataBySciName = async():Promise<boolean>=>{
   // //type the search form
   await page.type("#searchInput",sciName)
   await page.click("#search-form fieldset button")
-  await page.waitForNavigation({waitUntil: "domcontentloaded",timeout:0})
-  const pageContent = await page.content();
+  await page.waitForNavigation({waitUntil: "load",timeout:0})
   const url = await page.url()
-  if(pageContent.includes('#mw-content-text > div.searchresults > p.mw-search-nonefound')){
-    await resultNotFound()
-  }else if(pageContent.includes('#mw-content-text > div.searchdidyoumean')){
-    await getResultAfterSpellCorrection(page,sciName)
-  }else if(url.includes('search')){
-    await getResultFromFirstLink(page,sciName);
-  }else{
-    await getResultDirectly(page,sciName)
+  let result:Animal
+  if(!url.includes('search')){
+    return await getResultDirectly(page,sciName)
   }
-  await page.close()
-  isClose = true
-  return isClose
+  if(await hasSelector(page,'.mw-search-nonefound')){
+    return await resultNotFound(page,sciName)
+  }
+  if(await hasSelector(page,'.searchdidyoumean')){
+    return await getResultAfterSpellCorrection(page,sciName)
+  }
+  return await getResultFromFirstLink(page,sciName);
+}
+
+const hasSelector =async(page:Page,selector:string)=>{
+  try {
+    await page.waitForSelector(selector,{timeout:5000})
+    return true
+  } catch (error) {
+    // console.error('waitForSelectorFailed because',error)
+    return false
+  }
 }
 
 /**
  * @descritpion get result directly from result page
- * @param {puppeteer.page} result page 
+ * @param {Page} result page 
  * @param {string} sciName
+ * @returns {Animal} animalData
  */
 const getResultDirectly = async(page:Page,name:string):Promise<Animal>=>{
 
@@ -103,7 +112,9 @@ const getResultDirectly = async(page:Page,name:string):Promise<Animal>=>{
   } catch (error:any) {
     axiosErrorHandler(error)
   }
-  await page.close()
+  // console.log('before page close')
+  // await page.close()
+  // console.log('page close')
   console.log('animalData',animalData)
   return animalData
   // await axios({
@@ -114,35 +125,38 @@ const getResultDirectly = async(page:Page,name:string):Promise<Animal>=>{
   // });
 }
 
-const getResultFromFirstLink = async(page:Page,name:string):Promise<Animal>=>{
-  // await page.waitForSelector("#mw-content-text > div.searchresults.mw-searchresults-has-iw > ul > li:nth-child(1) > div.mw-search-result-heading > a", {visible: true});
-  // await page.waitForSelector('#mw-content-text > div.searchresults.mw-searchresults-has-iw > ul > li:nth-child(1) > div.mw-search-result-heading > a')
-  // await page.click('#mw-content-text > div.searchresults.mw-searchresults-has-iw > ul > li:nth-child(1) > div.mw-search-result-heading > a'),
-  // await page.waitForNavigation({waitUntil: "domcontentloaded"})
-  // await getResultDirectly(page,name)
-  let firstLink = await page.$("#mw-content-text > div.searchresults.mw-searchresults-has-iw > ul > li:nth-child(1) > div.mw-search-result-heading > a");
-  await firstLink.click();
-  await page.waitForNavigation({waitUntil: "domcontentloaded"})
-  let result = animalData
+async function getResultFromFirstLink(page:Page,name:string){
   try {
-    result = await getResultDirectly(page,name);
-    
+    await page.waitForSelector('div.mw-search-result-heading > a')
   } catch (error) {
-    console.error('getResultDirectly failed because',error)
+    console.error('waitForSelector failed because',error)
   }
-  return result;
+  // try {
+  //   await Promise.all([
+  //     page.waitForSelector(".mw-search-result-heading > a")
+  //     // page.click("#mw-content-text > div.searchresults.mw-searchresults-has-iw > ul > li:nth-child(1) > div.mw-search-result-heading > a"),
+  //     // page.click("div.mw-search-result-heading > a:nth-child(1)"),
+  //     // page.waitForNavigation({waitUntil: "load"})
+  //   ])
+  // } catch (error) {
+  //   console.error(`navigate to first link page failed because ${error}`)
+  // }
+  // return await getResultDirectly(page,name)
 }
 
-const getResultAfterSpellCorrection = async(page:Page,name:string):Promise<Animal>=>{
-  await page.click('#mw-search-DYM-suggestion')
-  await page.waitForNavigation({waitUntil: "domcontentloaded"})
-  let result = animalData
+const getResultAfterSpellCorrection = async(page:Page,name:string)=>{
+  console.log('click do you mean link')
+  // await page.click('#mw-search-DYM-suggestion')
+  console.log('nav to search do you mean result page')
   try {
-    result=await getResultFromFirstLink(page,name)
+   await Promise.all([
+      page.click('#mw-search-DYM-suggestion'),
+      page.waitForNavigation({waitUntil: "load"})
+    ])
   } catch (error) {
-    console.error('getResultDirectly failed because',error)
+    console.error(`getResultAfterSpellCorrection failed because ${error}`)
   }
-  return result
+  return await getResultFromFirstLink(page,name)
 }
 
 /**
@@ -165,7 +179,9 @@ const resultNotFound = async(page:Page,name:string):Promise<Animal>=>{
   } catch (error:any) {
     axiosErrorHandler(error)
   }
+  console.log('before page close')
   await page.close()
+  console.log('page close')
   return animalData
 }
 
