@@ -1,7 +1,7 @@
-import { launch } from "puppeteer";
+import { launch, Page } from "puppeteer";
 import { getResultAfterSpellCorrection } from "./getResultAfterSpellCorrection";
 import { getResultDirectly } from "./getResultDirectly";
-import { getResultFromFirstLink } from "./getResultFromFirstLink";
+import { getUrlFromFirstLink } from "./geturlFromFirstLink";
 import { resultNotFound } from "./resultNotFound";
 import {hasSelector} from '../index'
 
@@ -13,23 +13,55 @@ async function scrapeRelatedDataBySciName(name:string){
   const browser = await launch({headless:false});
   // //open new tab
   const page = await browser.newPage();
-  // //go to the page
-  await page.goto(`https://www.wikipedia.org`,{waitUntil:"networkidle0"})
-  // //type the search form
+  // await Promise.all([
+  //   page.goto(`https://www.wikipedia.org`,{waitUntil: "networkidle0"}),
+  //   page.type("#searchInput",name),
+  //   page.click("#search-form fieldset button"),
+  // ])
+  await page.goto(`https://www.wikipedia.org`,{waitUntil: "networkidle0"})
   await page.type("#searchInput",name)
-  await page.click("#search-form fieldset button")
-  await page.waitForNavigation({waitUntil: "load",timeout:0})
+  try {
+    await Promise.all([
+      page.click("#search-form fieldset button"),
+      page.waitForNavigation({waitUntil:"networkidle0"})
+    ])
+  } catch (error) {
+    console.error('search reuslt failed because',error)
+  }
   const url = await page.url()
   if(!url.includes('search')){
-    return await getResultDirectly(page,name)
+    const result= await getResultDirectly(page)
+    console.log('result',result)
+    return result
   }
   if(await hasSelector(page,'.mw-search-nonefound')){
-    return await resultNotFound(page,name)
+    const result= await resultNotFound(page,name)
+    console.log('result',result)
+    return result
   }
   if(await hasSelector(page,'.searchdidyoumean')){
-    return await getResultAfterSpellCorrection(page,name)
+    console.log('getResultAfterSpellCorrection')
+    await getResultAfterSpellCorrection(page,name)
+    console.log('getResultFromFirstLink')
+    // await page.waitForTimeout(5000)
+    console.log('getUrlFromFirstLink')
+    const url=await getUrlFromFirstLink(page)
+    await page.goto(url,{waitUntil:'networkidle0'})
+    console.log('getResultDirectly')
+    const result=await getResultDirectly(page)
+    console.log('result',result)
+    return result
   }
-  return await getResultFromFirstLink(page,name);
+  await getUrlFromFirstLink(page);
+  const result=await getResultDirectly(page)
+  console.log('result',result)
+  return result
+}
+
+async function scrapeArrticlePageWithUrl(page:Page,articleUrl:string){
+  await page.goto(articleUrl,{waitUntil:'networkidle0'})
+  console.log('getResultDirectly')
+  const result=await getResultDirectly(page)
 }
 
 export{
