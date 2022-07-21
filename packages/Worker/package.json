@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node index.ts",
     "build": "tsc",
-    "lint": "eslint . --ext .ts --fix"
+    "lint": "eslint . --ext .ts --fix",
+    "test":"ts-node test.ts "
   },
   "keywords": [],
   "author": "",
