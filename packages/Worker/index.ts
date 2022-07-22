@@ -5,25 +5,25 @@ import axios, {AxiosError } from "axios"
 import {Page,launch,ElementHandle} from "puppeteer";
 
 let sciName=''
-export interface result {
-  status: string;
-  name: string;
-  description:string
-}
+// export interface result {
+//   status: string;
+//   name: string;
+//   description:string
+// }
 
-export interface Animal {
-  SciName: string;
-  result :result; 
-}
+// export interface Animal {
+//   SciName: string;
+//   result :result; 
+// }
 
-export const animalData: Animal = {
-  SciName:'',
-  result: {
-    status:'',
-    name:'',
-    description:''
-  }
-}
+// export const animalData: Animal = {
+//   SciName:'',
+//   result: {
+//     status:'',
+//     name:'',
+//     description:''
+//   }
+// }
 
 
 /**
@@ -44,7 +44,7 @@ export const animalData: Animal = {
 
 export const hasSelector =async(page:Page,selector:string)=>{
   try {
-    await page.waitForSelector(selector,{timeout:5000})
+    await page.waitForSelector(selector,{timeout:500})
     return true
   } catch (error) {
     // console.error('waitForSelectorFailed because',error)

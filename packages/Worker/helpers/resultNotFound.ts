@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Page } from "puppeteer";
-import {Animal,animalData,axiosErrorHandler} from '../index'
+import {axiosErrorHandler} from '../index'
+
 
 /**
  * @description handle search result not found

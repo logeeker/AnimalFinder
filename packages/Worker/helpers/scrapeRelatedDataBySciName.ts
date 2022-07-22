@@ -1,15 +1,14 @@
 import { launch, Page } from "puppeteer";
 import { getResultAfterSpellCorrection } from "./getResultAfterSpellCorrection";
-import { getResultDirectly } from "./getResultDirectly";
+import { getResultDirectly,result } from "./getResultDirectly";
 import { getUrlFromFirstLink } from "./geturlFromFirstLink";
-import { resultNotFound } from "./resultNotFound";
 import {hasSelector} from '../index'
 
 /**
  * @description scrape animalData by sciName
  * @param {string} name
  */
-async function scrapeRelatedDataBySciName(name:string){
+async function scrapeRelatedDataBySciName(name:string):Promise<result>{
   const browser = await launch({headless:false});
   // //open new tab
   const page = await browser.newPage();
@@ -35,9 +34,7 @@ async function scrapeRelatedDataBySciName(name:string){
     return result
   }
   if(await hasSelector(page,'.mw-search-nonefound')){
-    const result= await resultNotFound(page,name)
-    console.log('result',result)
-    return result
+    throw new Error('can not found any article')
   }
   if(await hasSelector(page,'.searchdidyoumean')){
     console.log('getResultAfterSpellCorrection')
@@ -46,10 +43,7 @@ async function scrapeRelatedDataBySciName(name:string){
     // await page.waitForTimeout(5000)
     console.log('getUrlFromFirstLink')
     const url=await getUrlFromFirstLink(page)
-    await page.goto(url,{waitUntil:'networkidle0'})
-    console.log('getResultDirectly')
-    const result=await getResultDirectly(page)
-    console.log('result',result)
+    const result = await scrapeArrticlePageWithUrl(page,url)
     return result
   }
   await getUrlFromFirstLink(page);
@@ -58,10 +52,12 @@ async function scrapeRelatedDataBySciName(name:string){
   return result
 }
 
-async function scrapeArrticlePageWithUrl(page:Page,articleUrl:string){
+async function scrapeArrticlePageWithUrl(page:Page,articleUrl:string):Promise<result>{
   await page.goto(articleUrl,{waitUntil:'networkidle0'})
   console.log('getResultDirectly')
   const result=await getResultDirectly(page)
+  console.log('result',result)
+  return result
 }
 
 export{
