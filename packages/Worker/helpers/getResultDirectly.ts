@@ -8,7 +8,7 @@ interface result{
 /**
  * @descritpion get result directly from result page
  * @param {Page} result page 
- * @param {string} sciName
+ * @return {result} result type
  */
 async function getResultDirectly(page:Page):Promise<result>{
   let data:result = {name:''}
