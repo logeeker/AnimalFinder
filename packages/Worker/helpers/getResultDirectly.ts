@@ -1,7 +1,8 @@
 import { Page } from "puppeteer";
 
 interface result{
-  name: string;
+  name: string,
+  description:string
 }
 
 
@@ -11,18 +12,33 @@ interface result{
  * @return {result} result type
  */
 async function getResultDirectly(page:Page):Promise<result>{
-  let data:result = {name:''}
+  const data:result = {name:'',description:''}
   try {
     const commonName = await page.$eval('#firstHeading', (e: { textContent: any; }) => e.textContent);
-    // const description = await page.$eval('#mw-content-text > div.mw-parser-output > p:nth-child(4)', (e: { textContent: any; }) => e.textContent);
     data.name = commonName?? ''
     if(!commonName){
       throw new Error(`no commonName`)
     }
-    // data.description = description? description:''
   } catch(err){
     throw new Error(`getCommonName failed because ${err}`)
   }
+  try {
+    const description = await page.$$eval('.mw-parser-output > p',paragraphs=>{
+      if(paragraphs.length>0){
+        const paragraph = paragraphs[1].textContent
+        return paragraph? paragraph.replace('\n',''):''
+      }
+    });
+    console.log('description',description)
+    data.description=description?? ''
+    console.log('data.description',data.description)
+    if(!description){
+      throw new Error(`no description.`)
+    }
+  } catch (err) {
+    throw new Error(`getDescription failed because ${err}`)
+  }
+  console.log('data',data)
   const result = data
   return result
 }
