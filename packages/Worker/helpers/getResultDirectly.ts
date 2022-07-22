@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Page } from "puppeteer";
-import {axiosErrorHandler} from '../index'
 
 interface result{
   name: string;
