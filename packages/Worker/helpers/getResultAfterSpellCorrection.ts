@@ -2,7 +2,7 @@ import { Page } from 'puppeteer';
 
 /**
  * @descritpion get result directly from result page
- * @param {Page} result page 
+ * @param {Page} pupprteer page 
  */
 async function getResultAfterSpellCorrection(page:Page){
   console.log('nav to search do you mean result page')
