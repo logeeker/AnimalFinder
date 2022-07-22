@@ -33,9 +33,8 @@ async function scrapeRelatedDataBySciName(name:string):Promise<result>{
   }
   if(await hasSelector(page,'.searchdidyoumean')){
     console.log('getResultAfterSpellCorrection')
-    await getResultAfterSpellCorrection(page,name)
+    await getResultAfterSpellCorrection(page)
     console.log('getResultFromFirstLink')
-    // await page.waitForTimeout(5000)
     console.log('getUrlFromFirstLink')
     const url=await getUrlFromFirstLink(page)
     const result = await scrapeArrticlePageWithUrl(page,url)
