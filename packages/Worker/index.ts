@@ -2,14 +2,8 @@ import { resolve } from 'path';
 import dotenv from 'dotenv';
 dotenv.config({ path: resolve(__dirname, "../../.env") });
 import axios, {AxiosError } from "axios"
-import {Page,launch,ElementHandle} from "puppeteer";
 
 let sciName=''
-// export interface result {
-//   status: string;
-//   name: string;
-//   description:string
-// }
 
 // export interface Animal {
 //   SciName: string;
@@ -38,18 +32,6 @@ let sciName=''
     console.error(`get sciName failed because ${error}`)
   }
   return sciName
-}
-
-
-
-export const hasSelector =async(page:Page,selector:string)=>{
-  try {
-    await page.waitForSelector(selector,{timeout:500})
-    return true
-  } catch (error) {
-    // console.error('waitForSelectorFailed because',error)
-    return false
-  }
 }
 
  /**

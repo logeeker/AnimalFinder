@@ -7,6 +7,7 @@ import {hasSelector} from '../index'
 /**
  * @description scrape animalData by sciName
  * @param {string} name
+ * @return {result} result{name:string,description:string}
  */
 async function scrapeRelatedDataBySciName(name:string):Promise<result>{
   const browser = await launch({headless:false});
@@ -52,6 +53,15 @@ async function scrapeArrticlePageWithUrl(page:Page,articleUrl:string):Promise<re
   const result=await getResultDirectly(page)
   console.log('result',result)
   return result
+}
+
+async function hasSelector(page:Page,selector:string) {
+  try {
+    await page.waitForSelector(selector,{timeout:500})
+    return true
+  } catch (error) {
+    return false
+  }
 }
 
 export{
