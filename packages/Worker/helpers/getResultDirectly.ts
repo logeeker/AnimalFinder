@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Page } from "puppeteer";
 
 interface result{
@@ -25,16 +24,6 @@ async function getResultDirectly(page:Page):Promise<result>{
     throw new Error(`getCommonName failed because ${err}`)
   }
   const result = data
-  // try {
-  //   await axios.post(`http://localhost:${process.env.PORT}`,{
-  //     animalData:animalData
-  //   })
-  // } catch (error:any) {
-  //   axiosErrorHandler(error)
-  // }
-  // console.log('before page close')
-  // await page.close()
-  // console.log('page close')
   return result
 }
 
