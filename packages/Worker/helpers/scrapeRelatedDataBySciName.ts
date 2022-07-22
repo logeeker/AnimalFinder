@@ -12,11 +12,6 @@ async function scrapeRelatedDataBySciName(name:string):Promise<result>{
   const browser = await launch({headless:false});
   // //open new tab
   const page = await browser.newPage();
-  // await Promise.all([
-  //   page.goto(`https://www.wikipedia.org`,{waitUntil: "networkidle0"}),
-  //   page.type("#searchInput",name),
-  //   page.click("#search-form fieldset button"),
-  // ])
   await page.goto(`https://www.wikipedia.org`,{waitUntil: "networkidle0"})
   await page.type("#searchInput",name)
   try {
