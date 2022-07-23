@@ -2,7 +2,6 @@ import { launch, Page } from "puppeteer";
 import { getResultAfterSpellCorrection } from "./getResultAfterSpellCorrection";
 import { getResultDirectly,result } from "./getResultDirectly";
 import { getUrlFromFirstLink } from "./geturlFromFirstLink";
-import {hasSelector} from '../index'
 
 /**
  * @description scrape animalData by sciName
