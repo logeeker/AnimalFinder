@@ -26,9 +26,11 @@ async function scrapeRelatedDataBySciName(name:string):Promise<result>{
   if(!url.includes('search')){
     const result= await getResultDirectly(page)
     console.log('result',result)
+    await page.close()
     return result
   }
   if(await hasSelector(page,'.mw-search-nonefound')){
+    await page.close()
     throw new Error('can not found any article')
   }
   if(await hasSelector(page,'.searchdidyoumean')){
@@ -38,11 +40,13 @@ async function scrapeRelatedDataBySciName(name:string):Promise<result>{
     console.log('getUrlFromFirstLink')
     const url=await getUrlFromFirstLink(page)
     const result = await scrapeArrticlePageWithUrl(page,url)
+    await page.close()
     return result
   }
   await getUrlFromFirstLink(page);
   const result=await getResultDirectly(page)
   console.log('result',result)
+  await page.close()
   return result
 }
 
@@ -51,6 +55,7 @@ async function scrapeArrticlePageWithUrl(page:Page,articleUrl:string):Promise<re
   console.log('getResultDirectly')
   const result=await getResultDirectly(page)
   console.log('result',result)
+  await page.close()
   return result
 }
 
