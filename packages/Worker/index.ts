@@ -2,29 +2,48 @@ import { resolve } from 'path';
 import dotenv from 'dotenv';
 dotenv.config({ path: resolve(__dirname, "../../.env") });
 import axios, {AxiosError } from "axios"
+import {scrapeRelatedDataBySciName} from './helpers/scrapeRelatedDataBySciName'
 
-let sciName=''
+async function main() {
+  let sciName = await getSciName();
+  while(true){
+    try {
+      let scrapedData = await scrapeRelatedDataBySciName(sciName)
+      if(scrapedData.name){
+        const result = {SciName:sciName,result:{status:'ok',name:scrapedData.name,description:scrapedData.description}}
+        try {
+          axios.post(`http://localhost:${process.env.PORT}`,{
+            animalData:result
+          }) 
+        } catch (error:any) {
+          axiosErrorHandler(error)
+        }
+        return result
+      }
+      const result = {SciName:sciName,result:{status:'error'}}
+      try {
+        axios.post(`http://localhost:${process.env.PORT}`,{
+          animalData:result
+        }) 
+      } catch (error:any) {
+        axiosErrorHandler(error)
+      }
+      return result
+    } catch (error) {
+      console.error('get scraped data failed because',error)
+    }
+  } 
+}
 
-// export interface Animal {
-//   SciName: string;
-//   result :result; 
-// }
-
-// export const animalData: Animal = {
-//   SciName:'',
-//   result: {
-//     status:'',
-//     name:'',
-//     description:''
-//   }
-// }
+main()
 
 
 /**
  * @description get sciName request
  * @returns {string} sciName
  */
- const getSciName = async():Promise<string>=>{
+async function getSciName():Promise<string>{
+  let sciName:string=''
   try {
     const response = await axios.get(`http://localhost:${process.env.PORT}`)
     sciName = await response.data.SciName
@@ -33,7 +52,7 @@ let sciName=''
   }
   return sciName
 }
-
+ 
  /**
   * @description handle axios request error
   * @param {AxiosError} error 
