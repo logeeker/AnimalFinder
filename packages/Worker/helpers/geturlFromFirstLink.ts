@@ -8,7 +8,7 @@ import {hasSelector} from './scrapeRelatedDataBySciName'
 async function getUrlFromFirstLink(page:Page):Promise<string>{
   console.log('getResultFromFirstLink start')
   if(await hasSelector(page,'.mw-search-nonefound')){
-    return ''
+    throw new Error('can not find any article.')
   }
   try {
     await page.waitForSelector('.mw-search-result-heading > a')

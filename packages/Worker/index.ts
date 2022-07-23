@@ -14,6 +14,10 @@ interface animalData{
 }
 
 async function main() {
+  let maxRetry = 3
+  let delay=0
+  let retry=0
+
   while(true){
     try {
       let sciName:string=''
@@ -21,29 +25,33 @@ async function main() {
         sciName = await getSciName();
       } catch (error) {
         console.error('getSciName failed because',error)
+        continue
       }
       console.log('sciName',sciName)
-      const rtn = {SciName:sciName,result:{status:'',name:'',description:''}}
-      try {
-        let scrapedData = await scrapeRelatedDataBySciName(sciName)
-        if(scrapedData.name){
-          rtn.result.status = 'ok'
-          rtn.result.name = scrapedData.name
-          rtn.result.description = scrapedData.description
-        }else{
-          rtn.result.status = 'error'
+      if(sciName){
+        const rtn = {SciName:sciName,result:{status:'',name:'',description:''}}
+        try {
+          const scrapedData = await scrapeRelatedDataBySciName(sciName)
+          if(scrapedData.name){
+            rtn.result.status = 'ok'
+            rtn.result.name = scrapedData.name
+            rtn.result.description = scrapedData.description
+          }else{
+            rtn.result.status = 'error'
+          }
+        } catch (error) {
+          console.error('get scrapeRelatedDataBySciName failed because',error)
+          retry++
+          delay++
         }
-      } catch (error) {
-        console.error('scrapeRelatedDataBySciName failed because',error)
-        rtn.result.status = 'error'
+        try {
+          await axios.post(`http://localhost:${process.env.PORT}`,{
+            animalData:rtn
+          }) 
+        } catch (error:any) {
+          axiosErrorHandler(error)
+        } 
       }
-      try {
-        await axios.post(`http://localhost:${process.env.PORT}`,{
-          animalData:rtn
-        }) 
-      } catch (error:any) {
-        axiosErrorHandler(error)
-      } 
     } catch (error) {
       console.error('get scraped data failed because',error)
     }
@@ -51,6 +59,7 @@ async function main() {
 }
 
 main()
+
 
 /**
  * @description get sciName request

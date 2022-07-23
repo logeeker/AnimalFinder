@@ -45,6 +45,8 @@ async function scrapeRelatedDataBySciName(name:string):Promise<result>{
       try {
         firstUrl = await getUrlFromFirstLink(page)
       } catch (error) {
+        await page.close()
+        await browser.close()
         throw new Error(`getUrlFromFirstLink failed because ${error}`)
       }
       const result = await scrapeArrticlePageWithUrl(page,firstUrl)
@@ -63,6 +65,8 @@ async function scrapeRelatedDataBySciName(name:string):Promise<result>{
     await browser.close()
     return result
   } catch (error) {
+    await page.close()
+    await browser.close()
     throw new Error(`scrapeRelatedDataBySciName failed because ${error}`)
   }
 }

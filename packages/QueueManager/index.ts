@@ -24,7 +24,7 @@ const rtn:Array<Animal>=[]
 
 
 //get scientific name from input.json
-const sciNames = JSON.parse(readFileSync('./input.json',{encoding:'utf8', flag:'r'}));
+const sciNames = JSON.parse(readFileSync('./sampleInput.json',{encoding:'utf8', flag:'r'}));
 interface obj{
   SciName:string,
   hasSent:boolean
@@ -33,12 +33,13 @@ interface obj{
 
 app.get('/',(req:Request,res:Response)=>{
   const sentSciName=sciNames.find((sciName:obj)=>!sciName.hasSent);
-  if(!sentSciName){
+  if(!sentSciName.SciName){
     return res.status(404).send('can not find sciName.')
+  }else{
+    sciNames[sciNames.indexOf(sentSciName)].hasSent = true
+    console.log('sentSciName',sentSciName)
+    return res.status(200).send(sentSciName)
   }
-  sciNames[sciNames.indexOf(sentSciName)].hasSent = true
-  console.log('sentSciName',sentSciName)
-  return res.status(200).send(sentSciName)
 })
 
 //get result from worker
