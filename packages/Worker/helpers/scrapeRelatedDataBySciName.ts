@@ -22,41 +22,56 @@ async function scrapeRelatedDataBySciName(name:string):Promise<result>{
   } catch (error) {
     console.error('search reuslt failed because',error)
   }
-  const url = await page.url()
-  if(!url.includes('search')){
-    const result= await getResultDirectly(page)
+  try {
+    const url = await page.url()
+    let firstUrl:string=''
+    if(!url.includes('search')){
+      const result= await getResultDirectly(page)
+      console.log('result',result)
+      await page.close()
+      await browser.close()
+      return result
+    }
+    if(await hasSelector(page,'.mw-search-nonefound')){
+      await page.close()
+      await browser.close()
+      throw new Error('can not found any article')
+    }
+    if(await hasSelector(page,'.searchdidyoumean')){
+      console.log('getResultAfterSpellCorrection')
+      await getResultAfterSpellCorrection(page)
+      console.log('getResultFromFirstLink')
+      console.log('getUrlFromFirstLink')
+      try {
+        firstUrl = await getUrlFromFirstLink(page)
+      } catch (error) {
+        throw new Error(`getUrlFromFirstLink failed because ${error}`)
+      }
+      const result = await scrapeArrticlePageWithUrl(page,firstUrl)
+      await page.close()
+      await browser.close()
+      return result
+    }
+    try {
+      firstUrl =await getUrlFromFirstLink(page); 
+    } catch (error) {
+      throw new Error(`getUrlFromFirstLink failed because ${error}`)
+    }
+    const result = await scrapeArrticlePageWithUrl(page,firstUrl)
     console.log('result',result)
     await page.close()
+    await browser.close()
     return result
+  } catch (error) {
+    throw new Error(`scrapeRelatedDataBySciName failed because ${error}`)
   }
-  if(await hasSelector(page,'.mw-search-nonefound')){
-    await page.close()
-    throw new Error('can not found any article')
-  }
-  if(await hasSelector(page,'.searchdidyoumean')){
-    console.log('getResultAfterSpellCorrection')
-    await getResultAfterSpellCorrection(page)
-    console.log('getResultFromFirstLink')
-    console.log('getUrlFromFirstLink')
-    const url=await getUrlFromFirstLink(page)
-    const result = await scrapeArrticlePageWithUrl(page,url)
-    await page.close()
-    return result
-  }
-  await getUrlFromFirstLink(page);
-  const result=await getResultDirectly(page)
-  console.log('result',result)
-  await page.close()
-  return result
 }
 
 async function scrapeArrticlePageWithUrl(page:Page,articleUrl:string):Promise<result>{
-  await page.goto(articleUrl,{waitUntil:'networkidle0'})
-  console.log('getResultDirectly')
-  const result=await getResultDirectly(page)
-  console.log('result',result)
-  await page.close()
-  return result
+    await page.goto(articleUrl,{waitUntil:'networkidle0'})
+    const result=await getResultDirectly(page)
+    console.log('getResultDirectly')
+    return result  
 }
 
 async function hasSelector(page:Page,selector:string) {
@@ -69,5 +84,6 @@ async function hasSelector(page:Page,selector:string) {
 }
 
 export{
-  scrapeRelatedDataBySciName
+  scrapeRelatedDataBySciName,
+  hasSelector
 }

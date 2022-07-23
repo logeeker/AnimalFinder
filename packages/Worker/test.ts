@@ -1,7 +1,7 @@
 import {scrapeRelatedDataBySciName} from './helpers/scrapeRelatedDataBySciName'
 
 async function test() {
- return await scrapeRelatedDataBySciName('Chlamydosaurus kingii')
+ return await scrapeRelatedDataBySciName('Choriotis kori')
 }
 
 test()

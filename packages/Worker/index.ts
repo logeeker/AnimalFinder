@@ -4,31 +4,46 @@ dotenv.config({ path: resolve(__dirname, "../../.env") });
 import axios, {AxiosError } from "axios"
 import {scrapeRelatedDataBySciName} from './helpers/scrapeRelatedDataBySciName'
 
+interface animalData{
+  SciName:string,
+  result:{
+    status:string,
+    name:string,
+    description:string
+  }
+}
+
 async function main() {
-  let sciName = await getSciName();
   while(true){
     try {
-      let scrapedData = await scrapeRelatedDataBySciName(sciName)
-      if(scrapedData.name){
-        const result = {SciName:sciName,result:{status:'ok',name:scrapedData.name,description:scrapedData.description}}
-        try {
-          axios.post(`http://localhost:${process.env.PORT}`,{
-            animalData:result
-          }) 
-        } catch (error:any) {
-          axiosErrorHandler(error)
-        }
-        return result
-      }
-      const result = {SciName:sciName,result:{status:'error'}}
+      let sciName:string=''
       try {
-        axios.post(`http://localhost:${process.env.PORT}`,{
-          animalData:result
+        sciName = await getSciName();
+      } catch (error) {
+        console.error('getSciName failed because',error)
+      }
+      console.log('sciName',sciName)
+      const rtn = {SciName:sciName,result:{status:'',name:'',description:''}}
+      try {
+        let scrapedData = await scrapeRelatedDataBySciName(sciName)
+        if(scrapedData.name){
+          rtn.result.status = 'ok'
+          rtn.result.name = scrapedData.name
+          rtn.result.description = scrapedData.description
+        }else{
+          rtn.result.status = 'error'
+        }
+      } catch (error) {
+        console.error('scrapeRelatedDataBySciName failed because',error)
+        rtn.result.status = 'error'
+      }
+      try {
+        await axios.post(`http://localhost:${process.env.PORT}`,{
+          animalData:rtn
         }) 
       } catch (error:any) {
         axiosErrorHandler(error)
-      }
-      return result
+      } 
     } catch (error) {
       console.error('get scraped data failed because',error)
     }
@@ -36,7 +51,6 @@ async function main() {
 }
 
 main()
-
 
 /**
  * @description get sciName request
@@ -52,7 +66,7 @@ async function getSciName():Promise<string>{
   }
   return sciName
 }
- 
+
  /**
   * @description handle axios request error
   * @param {AxiosError} error 
