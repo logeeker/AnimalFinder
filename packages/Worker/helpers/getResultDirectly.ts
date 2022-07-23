@@ -32,11 +32,8 @@ async function getResultDirectly(page:Page):Promise<result>{
     console.log('description',description)
     data.description=description?? ''
     console.log('data.description',data.description)
-    if(!description){
-      throw new Error(`no description.`)
-    }
   } catch (err) {
-    throw new Error(`getDescription failed because ${err}`)
+    console.error(`getDescription failed because ${err}`)
   }
   console.log('data',data)
   const result = data
