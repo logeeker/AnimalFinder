@@ -5,6 +5,10 @@ import axios, {AxiosError} from "axios"
 import {scrapeRelatedDataBySciName} from './helpers/scrapeRelatedDataBySciName'
 import { launch } from "puppeteer";
 
+/**
+ * @description add ten seconds dealy between failed request
+ * @returns {void} no return
+ */
 function delay():Promise<void>{
   return new Promise((resolve)=>{
     setTimeout(()=>{
@@ -13,11 +17,14 @@ function delay():Promise<void>{
   })
 }
 
+/**
+ * @description looping get requests of getting SciName and scraping data by the sciName. Then post the result data to QueueManager
+ * @return {void} no return 
+ */
 async function main() {
   while(true){
     try {
-
-      let sciName:string=''
+      let sciName=''
       try {
         sciName = await getSciName();
       } catch (error) {
@@ -49,7 +56,7 @@ async function main() {
         }
         await page.close()
         await browser.close()
-        
+
         try {
           await axios.post(`http://localhost:${process.env.PORT}`,{
             animalData:rtn
@@ -72,7 +79,7 @@ main()
  * @returns {string} sciName
  */
 async function getSciName():Promise<string>{
-  let sciName:string=''
+  let sciName=''
   try {
     const response = await axios.get(`http://localhost:${process.env.PORT}`)
     sciName = await response.data.SciName

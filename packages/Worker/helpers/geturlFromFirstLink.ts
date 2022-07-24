@@ -1,8 +1,8 @@
 import { Page } from 'puppeteer';
 import {hasSelector} from './scrapeRelatedDataBySciName'
 /**
- * @descritpion get result directly from result page
- * @param {Page} result page 
+ * @descritpion get the url for the first link on the search result page
+ * @param {Page} puppeteer page
  * @return {string} firstLinkUrl
  */
 async function getUrlFromFirstLink(page:Page):Promise<string>{

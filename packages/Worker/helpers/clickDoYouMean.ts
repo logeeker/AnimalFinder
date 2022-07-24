@@ -1,7 +1,7 @@
 import { Page } from 'puppeteer';
 
 /**
- * @descritpion get result directly from result page
+ * @descritpion click Do you mean button
  * @param {Page} pupprteer page 
  */
 async function clickDoYouMean(page:Page){

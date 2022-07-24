@@ -9,9 +9,9 @@ interface result{
 /**
  * @descritpion get result directly from result page
  * @param {Page} result page 
- * @return {result} result type
+ * @return {result} result type result:{name:string,description:string}
  */
-async function getResultDirectly(page:Page):Promise<result>{
+async function getResultDirectlyFromResultPage(page:Page):Promise<result>{
   const data:result = {name:'',description:''}
   try {
     const commonName = await page.$eval('#firstHeading', (e: { textContent: any; }) => e.textContent);
@@ -41,6 +41,6 @@ async function getResultDirectly(page:Page):Promise<result>{
 }
 
 export{
-  getResultDirectly,
+  getResultDirectlyFromResultPage,
   result
 }

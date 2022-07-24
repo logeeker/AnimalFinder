@@ -1,6 +1,6 @@
 import { Page } from "puppeteer";
 import { clickDoYouMean } from "./clickDoYouMean";
-import { getResultDirectly,result } from "./getResultDirectly";
+import { getResultDirectlyFromResultPage,result } from "./getResultDirectlyFromResultPage";
 import { getUrlFromFirstLink } from "./geturlFromFirstLink";
 
 /**
@@ -9,9 +9,7 @@ import { getUrlFromFirstLink } from "./geturlFromFirstLink";
  * @return {result} result{name:string,description:string}
  */
 async function scrapeRelatedDataBySciName(name:string,page:Page):Promise<result>{
-  // const browser = await launch({headless:false});
-  // // //open new tab
-  // const page = await browser.newPage();
+  
   await page.goto(`https://www.wikipedia.org`,{waitUntil: "networkidle0"})
   await page.type("#searchInput",name)
   try {
@@ -24,9 +22,9 @@ async function scrapeRelatedDataBySciName(name:string,page:Page):Promise<result>
   }
   try {
     const url = await page.url()
-    let firstUrl:string=''
+    let firstUrl=''
     if(!url.includes('search')){
-      const result= await getResultDirectly(page)
+      const result= await getResultDirectlyFromResultPage(page)
       console.log('result',result)
       return result
     }
@@ -50,14 +48,26 @@ async function scrapeRelatedDataBySciName(name:string,page:Page):Promise<result>
   }
 }
 
+/**
+ * @description scrape the Article page after going to the article url
+ * @param {Page} puppeteer
+ * @param {string} articleUrl 
+ * @returns {result} result:{name:string,description:string}
+ */
 async function scrapeArrticlePageWithUrl(page:Page,articleUrl:string):Promise<result>{
     await page.goto(articleUrl,{waitUntil:'networkidle0'})
-    const result=await getResultDirectly(page)
-    console.log('getResultDirectly')
+    const result=await getResultDirectlyFromResultPage(page)
+    console.log('getResultDirectlyFromResultPage')
     return result  
 }
 
-async function hasSelector(page:Page,selector:string) {
+/**
+ * @description check if the selector is existed or not
+ * @param {Page} page 
+ * @param {string} selector 
+ * @returns {Boolean} 
+ */
+async function hasSelector(page:Page,selector:string):Promise<boolean>{
   try {
     await page.waitForSelector(selector,{timeout:500})
     return true
