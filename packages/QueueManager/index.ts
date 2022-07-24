@@ -31,6 +31,11 @@ interface obj{
 }
 // send scientific name one by one to worker
 
+/**
+ * @description express get route to send sciName to worker
+ * @param {Request} request
+ * @param {Response} response
+ */
 app.get('/',(req:Request,res:Response)=>{
   const sentSciName=sciNames.find((sciName:obj)=>!sciName.hasSent);
   if(!sentSciName){
@@ -42,7 +47,11 @@ app.get('/',(req:Request,res:Response)=>{
   }
 })
 
-//get result from worker
+/**
+ * @description express post route to receive data from worker
+ * @param {Request} req
+ * @param {Response} res
+ */
 app.post('/',(req:Request,res:Response)=>{
   console.log(req.body);
   const data = req.body.animalData;
@@ -60,15 +69,6 @@ app.listen(port, () => {
   console.log(`listening on ${link}`)
 });
 
-console.log('rtn outside post request',rtn)
 
-// function storeOutPut(){
-//   if(rtn.length==0){
-//     return;
-//   }else{
-//     writeFileSync('./output.json',JSON.stringify(rtn))
-//   }
-// }
-// storeOutPut()
 
  
