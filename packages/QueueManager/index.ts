@@ -60,7 +60,7 @@ app.post('/',(req:Request,res:Response)=>{
   }
   console.log('inside post request rtn',rtn)
   if(rtn.length>0){
-    writeFileSync('./output.json',JSON.stringify(rtn))
+    writeFileSync('./output.json',JSON.stringify(rtn,null,2))
   }
   return res.status(200).send(data)
 })
