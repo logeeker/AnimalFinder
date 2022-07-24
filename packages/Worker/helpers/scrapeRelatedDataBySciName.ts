@@ -1,5 +1,5 @@
-import { launch, Page } from "puppeteer";
-import { getResultAfterSpellCorrection } from "./getResultAfterSpellCorrection";
+import { Page } from "puppeteer";
+import { clickDoYouMean } from "./clickDoYouMean";
 import { getResultDirectly,result } from "./getResultDirectly";
 import { getUrlFromFirstLink } from "./geturlFromFirstLink";
 
@@ -8,10 +8,10 @@ import { getUrlFromFirstLink } from "./geturlFromFirstLink";
  * @param {string} name
  * @return {result} result{name:string,description:string}
  */
-async function scrapeRelatedDataBySciName(name:string):Promise<result>{
-  const browser = await launch({headless:false});
-  // //open new tab
-  const page = await browser.newPage();
+async function scrapeRelatedDataBySciName(name:string,page:Page):Promise<result>{
+  // const browser = await launch({headless:false});
+  // // //open new tab
+  // const page = await browser.newPage();
   await page.goto(`https://www.wikipedia.org`,{waitUntil: "networkidle0"})
   await page.type("#searchInput",name)
   try {
@@ -28,31 +28,14 @@ async function scrapeRelatedDataBySciName(name:string):Promise<result>{
     if(!url.includes('search')){
       const result= await getResultDirectly(page)
       console.log('result',result)
-      await page.close()
-      await browser.close()
       return result
     }
     if(await hasSelector(page,'.mw-search-nonefound')){
-      await page.close()
-      await browser.close()
       throw new Error('can not found any article')
     }
     if(await hasSelector(page,'.searchdidyoumean')){
-      console.log('getResultAfterSpellCorrection')
-      await getResultAfterSpellCorrection(page)
-      console.log('getResultFromFirstLink')
-      console.log('getUrlFromFirstLink')
-      try {
-        firstUrl = await getUrlFromFirstLink(page)
-      } catch (error) {
-        await page.close()
-        await browser.close()
-        throw new Error(`getUrlFromFirstLink failed because ${error}`)
-      }
-      const result = await scrapeArrticlePageWithUrl(page,firstUrl)
-      await page.close()
-      await browser.close()
-      return result
+      console.log('clickDoYouMean')
+      await clickDoYouMean(page)
     }
     try {
       firstUrl =await getUrlFromFirstLink(page); 
@@ -61,12 +44,8 @@ async function scrapeRelatedDataBySciName(name:string):Promise<result>{
     }
     const result = await scrapeArrticlePageWithUrl(page,firstUrl)
     console.log('result',result)
-    await page.close()
-    await browser.close()
     return result
   } catch (error) {
-    await page.close()
-    await browser.close()
     throw new Error(`scrapeRelatedDataBySciName failed because ${error}`)
   }
 }

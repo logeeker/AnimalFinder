@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import dotenv from 'dotenv';
 dotenv.config({ path: resolve(__dirname, "../../.env") });
-import {readFileSync} from 'fs'
+import {readFileSync,writeFileSync} from 'fs'
 import express,{ Request, Response } from 'express';
 
 const app = express();
@@ -33,7 +33,7 @@ interface obj{
 
 app.get('/',(req:Request,res:Response)=>{
   const sentSciName=sciNames.find((sciName:obj)=>!sciName.hasSent);
-  if(!sentSciName.SciName){
+  if(!sentSciName){
     return res.status(404).send('can not find sciName.')
   }else{
     sciNames[sciNames.indexOf(sentSciName)].hasSent = true
@@ -49,13 +49,26 @@ app.post('/',(req:Request,res:Response)=>{
   if(Object.values(data).length>0){
     rtn.push(data)
   }
-  console.log('rtn',rtn)
-  res.status(200).send(data)
+  console.log('inside post request rtn',rtn)
+  if(rtn.length>0){
+    writeFileSync('./output.json',JSON.stringify(rtn))
+  }
+  return res.status(200).send(data)
 })
 
 app.listen(port, () => {
   console.log(`listening on ${link}`)
 });
 
-console.log('rtn',rtn)
+console.log('rtn outside post request',rtn)
+
+// function storeOutPut(){
+//   if(rtn.length==0){
+//     return;
+//   }else{
+//     writeFileSync('./output.json',JSON.stringify(rtn))
+//   }
+// }
+// storeOutPut()
+
  
