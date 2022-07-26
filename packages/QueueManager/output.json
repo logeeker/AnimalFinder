@@ -1,0 +1,402 @@
+[
+  {
+    "SciName": "Chlamydosaurus kingii",
+    "result": {
+      "status": "ok",
+      "name": "Chlamydosaurus",
+      "description": "The frilled lizard (Chlamydosaurus kingii), also known commonly as the frill-necked lizard, frilled dragon or frilled agama, is a species of lizard in the family Agamidae. It is endemic to northern Australia and southern New Guinea. This species is the only member of the genus Chlamydosaurus."
+    }
+  },
+  {
+    "SciName": "Fregata magnificans",
+    "result": {
+      "status": "ok",
+      "name": "Magnificent frigatebird",
+      "description": "The magnificent frigatebird (Fregata magnificens) is a seabird of the frigatebird family Fregatidae. With a length of 89–114 centimetres (2 ft 11 in – 3 ft 9 in) and wingspan of 2.17–2.44 m (7 ft 1 in – 8 ft 0 in) it is the largest species of frigatebird. It occurs over tropical and subtropical waters off America, between northern Mexico and Perú on the Pacific coast and between Florida and southern Brazil along the Atlantic coast.[1] There are also populations on the Galápagos Islands in the Pacific and the Cape Verde islands in the Atlantic."
+    }
+  },
+  {
+    "SciName": "Choriotis kori",
+    "result": {
+      "status": "error",
+      "name": "",
+      "description": ""
+    }
+  },
+  {
+    "SciName": "Trachyphonus vaillantii",
+    "result": {
+      "status": "ok",
+      "name": "Crested barbet",
+      "description": "The crested barbet (Trachyphonus vaillantii) ('trachys'=rough, 'phone'=voice, sound') is a sub-Saharan bird in the Lybiidae family. Its specific name commemorates François Levaillant, a famed French naturalist."
+    }
+  },
+  {
+    "SciName": "Lepilemur rufescens",
+    "result": {
+      "status": "ok",
+      "name": "Milne-Edwards' sportive lemur",
+      "description": "Milne-Edwards' sportive lemur (Lepilemur edwardsi), or Milne-Edwards' weasel lemur, is a species of lemur in the family Lepilemuridae. It is endemic to Madagascar. Its natural habitat is subtropical or tropical dry forests. It is threatened by habitat loss.[1]"
+    }
+  },
+  {
+    "SciName": "Falco peregrinus",
+    "result": {
+      "status": "ok",
+      "name": "Peregrine falcon",
+      "description": "The peregrine falcon (Falco peregrinus), also known as the peregrine,[3] and historically as the duck hawk in North America,[4] is a cosmopolitan bird of prey (raptor) in the family Falconidae. A large, crow-sized falcon, it has a blue-grey back, barred white underparts, and a black head. The peregrine is renowned for its speed, reaching up to 320 km/h (200 mph) during its characteristic hunting stoop (high-speed dive),[5] making it the fastest bird in the world, as well as the fastest member of the animal kingdom.[6][7][8] According to a National Geographic TV program, the highest measured speed of a peregrine falcon is 389 km/h (242 mph).[9][10] As is typical for bird-eating raptors, peregrine falcons are sexually dimorphic, with females being considerably larger than males. [11][12]"
+    }
+  },
+  {
+    "SciName": "Ratufa indica",
+    "result": {
+      "status": "ok",
+      "name": "Indian giant squirrel",
+      "description": "The Indian giant squirrel or Malabar giant squirrel (Ratufa indica) is a large multi-coloured tree squirrel species endemic to forests and woodlands in India. It is a diurnal, arboreal, and mainly herbivorous squirrel.[4]"
+    }
+  },
+  {
+    "SciName": "Speothos vanaticus",
+    "result": {
+      "status": "error",
+      "name": "",
+      "description": ""
+    }
+  },
+  {
+    "SciName": "Lorythaixoides concolor",
+    "result": {
+      "status": "error",
+      "name": "",
+      "description": ""
+    }
+  },
+  {
+    "SciName": "Gekko gecko",
+    "result": {
+      "status": "ok",
+      "name": "Tokay gecko",
+      "description": "The tokay gecko (Gekko gecko)[1] is a nocturnal arboreal gecko in the genus Gekko, the true geckos. It is native to Asia and some Pacific Islands."
+    }
+  },
+  {
+    "SciName": "Equus hemionus",
+    "result": {
+      "status": "ok",
+      "name": "Onager",
+      "description": "The onager (/ˈɒnədʒər/; Equus hemionus), also known as hemione or Asiatic wild ass,[3] is a species of the family Equidae native to Asia. A member of the subgenus Asinus, the onager was described and given its binomial name by German zoologist Peter Simon Pallas in 1775. Five subspecies have been recognized, one of which is extinct."
+    }
+  },
+  {
+    "SciName": "Bubalus arnee",
+    "result": {
+      "status": "ok",
+      "name": "Wild water buffalo",
+      "description": "The wild water buffalo (Bubalus arnee), also called Asian buffalo, Asiatic buffalo and wild Asian buffalo, is a large bovine native to the Indian subcontinent and Southeast Asia. It has been listed as Endangered in the IUCN Red List since 1986, as the remaining population totals less than 4,000. A population decline of at least 50% over the last three generations (24–30 years) is projected to continue.[1] The global population has been estimated at 3,400 individuals, of which 3,100 (91%) live in India, mostly in Assam.[2] The wild water buffalo is the most likely ancestor of the domestic water buffalo.[3][4]"
+    }
+  },
+  {
+    "SciName": "Arctogalidia trivirgata",
+    "result": {
+      "status": "ok",
+      "name": "Small-toothed palm civet",
+      "description": "The small-toothed palm civet (Arctogalidia trivirgata), also known as the three-striped palm civet, is a palm civet native to dense forests of Southeast Asia, from the Assam district of India to Indochina and the Malay Peninsula and on Sumatra, Bangka, Java, Borneo, and numerous small nearby islands of Indonesia.[2]"
+    }
+  },
+  {
+    "SciName": "Chauna torquata",
+    "result": {
+      "status": "ok",
+      "name": "Southern screamer",
+      "description": "The southern screamer (Chauna torquata), also known as the crested screamer, belongs to the order Anseriformes. It is found in southeastern Peru, northern Bolivia, Paraguay, southern Brazil, Uruguay and northern Argentina.[2] Its diet consists of plants stems, seeds, leaves, and, rarely, small animals."
+    }
+  },
+  {
+    "SciName": "Dasyurus maculatus",
+    "result": {
+      "status": "ok",
+      "name": "Tiger quoll",
+      "description": "The tiger quoll (Dasyurus maculatus), also known as the spotted-tail quoll, the spotted quoll, the spotted-tail dasyure, native cat or the tiger cat, is a carnivorous marsupial of the quoll genus Dasyurus native to Australia. With males and females weighing around 3.5 and 1.8 kg, respectively, it is the world's  second largest extant carnivorous marsupial, behind the Tasmanian devil. Two subspecies are recognised; the nominate is found in wet forests of southeastern Australia and Tasmania, and a northern subspecies, D. m. gracilis, is found in a small area of northern Queensland and is endangered."
+    }
+  },
+  {
+    "SciName": "Meles meles",
+    "result": {
+      "status": "ok",
+      "name": "European badger",
+      "description": "The European badger (Meles meles), also known as the Eurasian badger, is a badger species in the family Mustelidae native to almost all of Europe. It is classified as least concern on the IUCN Red List as it has a wide range and a large stable population size, and is thought to be increasing in some regions. Several subspecies are recognized with the nominate subspecies (M. m. meles) predominating in most of Europe.[1] In Europe, where no other badger species commonly occurs, it is generally just called the \"badger\"."
+    }
+  },
+  {
+    "SciName": "Colobus guerza",
+    "result": {
+      "status": "ok",
+      "name": "Mantled guereza",
+      "description": "The mantled guereza (Colobus guereza), also known simply as the guereza, the eastern black-and-white colobus, or the Abyssinian black-and-white colobus, is a black-and-white colobus, a type of Old World monkey. It is native to much of west central and east Africa, including Cameroon, Equatorial Guinea, Nigeria, Ethiopia, Kenya, Tanzania, Uganda and Chad. The species consists of several subspecies that differ in appearance. It has a distinctive appearance, which is alluded to in its name; the long white fringes of hair that run along each side of its black trunk are known as a mantle. Its face is framed with white hair and it has a large white tail tuft."
+    }
+  },
+  {
+    "SciName": "Sus scrofa",
+    "result": {
+      "status": "ok",
+      "name": "Wild boar",
+      "description": "The wild boar (Sus scrofa), also known as the wild swine,[3] common wild pig,[4] Eurasian wild pig,[5] or simply wild pig,[6] is a suid native to much of Eurasia and North Africa, and has been introduced to the Americas and Oceania. The species is now one of the widest-ranging mammals in the world, as well as the most widespread suiform.[4] It has been assessed as least concern on the IUCN Red List due to its wide range, high numbers, and adaptability to a diversity of habitats.[1] It has become an invasive species in part of its introduced range. Wild boars probably originated in Southeast Asia during the Early Pleistocene[7] and outcompeted other suid species as they spread throughout the Old World.[8]"
+    }
+  },
+  {
+    "SciName": "Felis caracal",
+    "result": {
+      "status": "ok",
+      "name": "Caracal",
+      "description": "The caracal (Caracal caracal) /ˈkærəkæl/ is a medium-sized wild cat native to Africa, the Middle East, Central Asia, and arid areas of Pakistan and northwestern India. It is characterised by a robust build, long legs, a short face, long tufted ears, and long canine teeth. Its coat is uniformly reddish tan or sandy, while the ventral parts are lighter with small reddish markings. It reaches 40–50 cm (16–20 in) at the shoulder and weighs 8–19 kg (18–42 lb). It was first scientifically described by German naturalist Johann Christian Daniel von Schreber in 1776. Three subspecies are recognised."
+    }
+  },
+  {
+    "SciName": "unavailable",
+    "result": {
+      "status": "ok",
+      "name": "Unavailability",
+      "description": "Numerical values associated with the calculation of availability are often awkward, consisting of a series of 9s before reaching any significant numerical information (e.g. 0.9999999654). For this reason, it is more convenient to use the complement measure of availability, namely, unavailability. Expressed mathematically, unavailability is 1 minus the availability. Therefore, a system with availability 0.9999999654 is more concisely described as having an unavailability of 3.46 × 10−8."
+    }
+  },
+  {
+    "SciName": "Zosterops pallidus",
+    "result": {
+      "status": "ok",
+      "name": "Orange River white-eye",
+      "description": "The Orange River white-eye (Zosterops pallidus) is a species of bird in the family Zosteropidae, which is native to Namibia and South Africa. It was formerly deemed conspecific with the Cape white-eye (Zosterops virens), but the two species occur sympatrically in central South Africa, and they are genetically distinct.[2]"
+    }
+  },
+  {
+    "SciName": "Neophron percnopterus",
+    "result": {
+      "status": "ok",
+      "name": "Egyptian vulture",
+      "description": "The Egyptian vulture (Neophron percnopterus), also called the white scavenger vulture or pharaoh's chicken, is a small Old World vulture and the only member of the genus Neophron. It is widely distributed from the Iberian Peninsula and North Africa to India. The contrasting underwing pattern and wedge-shaped tail make it distinctive in flight as it soars in thermals during the warmer parts of the day. Egyptian vultures feed mainly on carrion but are opportunistic and will prey on small mammals, birds, and reptiles. They also feed on the eggs of other birds, breaking larger ones by tossing a large pebble onto them."
+    }
+  },
+  {
+    "SciName": "Branta canadensis",
+    "result": {
+      "status": "ok",
+      "name": "Canada goose",
+      "description": "The Canada goose (Branta canadensis), or Canadian goose,[2] is a large wild goose with a black head and neck, white cheeks, white under its chin, and a brown body. It is native to the arctic and temperate regions of North America, and it is occasionally found during migration across the Atlantic in northern Europe. It has been introduced to the United Kingdom, Ireland, Finland, Sweden, Denmark, New Zealand, Japan, Chile, Argentina, and the Falkland Islands.[3] Like most geese, the Canada goose is primarily herbivorous and normally migratory; often found on or close to fresh water, the Canada goose is also common in  brackish marshes, estuaries, and lagoons."
+    }
+  },
+  {
+    "SciName": "Tamandua tetradactyla",
+    "result": {
+      "status": "ok",
+      "name": "Southern tamandua",
+      "description": "The southern tamandua (Tamandua tetradactyla), also called the collared anteater or lesser anteater, is a species of anteater from South America and the island of Trinidad in the Caribbean. It is a solitary animal found in many habitats, from mature to highly disturbed secondary forests and arid savannas. It feeds on ants, termites, and bees. Its very strong foreclaws can be used to break insect nests or to defend itself."
+    }
+  },
+  {
+    "SciName": "Cervus canadensis",
+    "result": {
+      "status": "ok",
+      "name": "Elk",
+      "description": "The elk (Cervus canadensis), also known as the wapiti,  is one of the largest species within the deer family, Cervidae, and one of the largest terrestrial mammals in its native range of North America, as well as Central and East Asia. The common name elk, used in North America, creates confusion because the larger Alces alces, which is called moose in North America, is also called elk in British English, and related names in other European languages (German Elch, Swedish älg, and French élan). The name \"wapiti\" is sometimes used in North America for Cervus canadensis. It originates from the Shawnee and Cree word waapiti, meaning 'white rump'."
+    }
+  },
+  {
+    "SciName": "Macropus eugenii",
+    "result": {
+      "status": "ok",
+      "name": "Tammar wallaby",
+      "description": "The tammar wallaby (Notamacropus eugenii), also known as the dama wallaby or darma wallaby, is a small macropod native to South and Western Australia. Though its geographical range has been severely reduced since European colonisation, the tammar wallaby remains common within its reduced range and is listed as \"Least Concern\" by the International Union for Conservation of Nature (IUCN). It has been introduced to New Zealand and reintroduced to some areas of Australia where it had been previously eradicated. Skull variations differentiate between tammar wallabies from Western Australia, Kangaroo Island, and mainland South Australia, making them distinct population groups."
+    }
+  },
+  {
+    "SciName": "Toxostoma curvirostre",
+    "result": {
+      "status": "ok",
+      "name": "Curve-billed thrasher",
+      "description": "The curve-billed thrasher (Toxostoma curvirostre) is a medium-sized mimid native to most of Mexico and to the deserts of southwestern United States. It is a non-migratory species, and throughout most of its range it is the most common desert thrasher.[2] Several subspecies have been classified since 1827, though there is no consensus on the number. Allopatric speciation is believed to have played a major role in the variations of the curve-billed. It is grey-brown overall with a slightly curved bill, and is similar in appearance to the related Bendire's thrasher. It generally resides in desert regions of the United States and Mexico, but can inhabit areas predominately populated by humans."
+    }
+  },
+  {
+    "SciName": "Cacatua tenuirostris",
+    "result": {
+      "status": "ok",
+      "name": "Long-billed corella",
+      "description": "The long-billed corella or slender-billed corella[2] (Cacatua tenuirostris) is a cockatoo native to Australia, which is similar in appearance to the little corella.[3] This species is mostly white, with a reddish-pink face and forehead, and has a long, pale beak, which is used to dig for roots and seeds. It has reddish-pink feathers on the breast and belly."
+    }
+  },
+  {
+    "SciName": "Spizaetus coronatus",
+    "result": {
+      "status": "ok",
+      "name": "Crowned eagle",
+      "description": "The crowned eagle, also known as the African crowned eagle or the crowned hawk-eagle (Stephanoaetus coronatus), is a large bird of prey found in sub-Saharan Africa; in Southern Africa it is restricted to eastern areas.[2] Its preferred habitats are principally riparian woodlands and various forests.[2] The crowned eagle is the only extant member of the genus Stephanoaetus. A second species, the Malagasy crowned eagle (Stephanoaetus mahery) became extinct after humans settled on Madagascar.[3]"
+    }
+  },
+  {
+    "SciName": "Chlamydosaurus kingii",
+    "result": {
+      "status": "ok",
+      "name": "Chlamydosaurus",
+      "description": "The frilled lizard (Chlamydosaurus kingii), also known commonly as the frill-necked lizard, frilled dragon or frilled agama, is a species of lizard in the family Agamidae. It is endemic to northern Australia and southern New Guinea. This species is the only member of the genus Chlamydosaurus."
+    }
+  },
+  {
+    "SciName": "Pseudocheirus peregrinus",
+    "result": {
+      "status": "ok",
+      "name": "Common ringtail possum",
+      "description": "The common ringtail possum (Pseudocheirus peregrinus, Greek for \"false hand\" and Latin for \"pilgrim\" or \"alien\") is an Australian marsupial.  It lives in a variety of habitats and eats a variety of leaves of both native and introduced plants, as well as flowers, fruits and sap. This possum also consumes a special type of faeces that is produced during the daytime when it is resting in a nest.  This behaviour is called caecotrophy and is similar to that seen in rabbits."
+    }
+  },
+  {
+    "SciName": "Gopherus agassizii",
+    "result": {
+      "status": "ok",
+      "name": "Desert tortoise",
+      "description": "The desert tortoise (Gopherus agassizii), is a species of tortoise in the family Testudinidae. The species is native to the Mojave and Sonoran Deserts of the southwestern United States and northwestern Mexico, and to the Sinaloan thornscrub of northwestern Mexico.[3] G. agassizii is distributed in western Arizona, southeastern California, southern Nevada, and southwestern Utah.[3]  The specific name agassizii is in honor of Swiss-American zoologist Jean Louis Rodolphe Agassiz.[4]"
+    }
+  },
+  {
+    "SciName": "Agkistrodon piscivorus",
+    "result": {
+      "status": "ok",
+      "name": "Agkistrodon piscivorus",
+      "description": "Agkistrodon piscivorus is a species of pit viper in the subfamily Crotalinae of the family Viperidae. It is one of the world's few semiaquatic vipers (along with the Florida cottonmouth), and is native to the southeastern United States.[5] As an adult, it is large and capable of delivering a painful and potentially fatal bite. When threatened, it may respond by coiling its body and displaying its fangs.[6] Individuals may bite when feeling threatened or being handled in any way.[7] It tends to be found in or near water, particularly in slow-moving and shallow lakes, streams, and marshes. It is a capable swimmer and, like several species of snakes, is known to occasionally enter bays and estuaries and swim between barrier islands and the mainland.[8]: 211 p. "
+    }
+  },
+  {
+    "SciName": "Acrantophis madagascariensis",
+    "result": {
+      "status": "ok",
+      "name": "Acrantophis madagascariensis",
+      "description": "Acrantophis madagascariensis is a species of boid snake in the subfamily Sanziniinae that is endemic to the island of Madagascar.[5] Its common names include Malagasy ground boa and Madagascar boa.[1]"
+    }
+  },
+  {
+    "SciName": "Panthera pardus",
+    "result": {
+      "status": "ok",
+      "name": "Leopard",
+      "description": "The leopard (Panthera pardus) is one of the five extant species in the genus Panthera, a member of the cat family, Felidae.[4] It occurs in a wide range in sub-Saharan Africa, in some parts of Western and Central Asia, Southern Russia, and on the Indian subcontinent to Southeast and East Asia. It is listed as Vulnerable on the IUCN Red List because leopard populations are threatened by habitat loss and fragmentation, and are declining in large parts of the global range. The leopard is considered locally extinct in Hong Kong, Singapore, South Korea, Jordan, Morocco, Togo, the United Arab Emirates, Uzbekistan, Lebanon, Mauritania, Kuwait, Syria, Libya, Tunisia and most likely in North Korea, Gambia, Laos, Lesotho, Tajikistan, Vietnam and Israel.[3]Contemporary records suggest that the leopard occurs in only 25% of its historical global range.[5][6]\n"
+    }
+  },
+  {
+    "SciName": "Alopex lagopus",
+    "result": {
+      "status": "ok",
+      "name": "Arctic fox",
+      "description": "The Arctic fox (Vulpes lagopus), also known as the white fox, polar fox, or snow fox, is a small fox native to the Arctic regions of the Northern Hemisphere and common throughout the Arctic tundra biome.[1][7][8] It is well adapted to living in cold environments, and is best known for its thick, warm fur that is also used as camouflage. It has a large and very fluffy tail. In the wild, most individuals do not live past their first year but some exceptional ones survive up to 11 years.[9] Its body length ranges from 46 to 68 cm (18 to 27 in), with a generally rounded body shape to minimize the escape of body heat."
+    }
+  },
+  {
+    "SciName": "Varanus salvator",
+    "result": {
+      "status": "ok",
+      "name": "Asian water monitor",
+      "description": "The Asian water monitor (Varanus salvator) is a large varanid lizard native to South and Southeast Asia. It is one of the most common monitor lizards in Asia, ranging from coastal northeast India, Bangladesh, Sri Lanka, mainland Southeast Asia, and southern China to Indonesian islands where it lives close to water. It is listed as Least Concern on the IUCN Red List.[1] It was described by Laurenti in 1768 and is among the largest squamates in the world.[2]"
+    }
+  },
+  {
+    "SciName": "Oryx gazella",
+    "result": {
+      "status": "ok",
+      "name": "Gemsbok",
+      "description": "The gemsbok, gemsbuck or South African oryx (Oryx gazella) is a large antelope in the genus Oryx. It is native to the arid regions of Southern Africa, such as the Kalahari Desert. Some authorities formerly included the East African oryx as a subspecies."
+    }
+  },
+  {
+    "SciName": "Pycnonotus nigricans",
+    "result": {
+      "status": "ok",
+      "name": "African red-eyed bulbul",
+      "description": "The African red-eyed bulbul or black-fronted bulbul (Pycnonotus nigricans) is a species of songbird in the family Pycnonotidae.It is found in south-western Africa.\nIts natural habitats are dry savanna, subtropical or tropical dry shrubland, and riverine scrub.[1][2][3] It feeds on fruit (including Ficus), flowers, nectar, and insects.[2][3]\n"
+    }
+  },
+  {
+    "SciName": "Gyps bengalensis",
+    "result": {
+      "status": "ok",
+      "name": "White-rumped vulture",
+      "description": "The white-rumped vulture (Gyps bengalensis) is an Old World vulture native to South and Southeast Asia. It has been listed as Critically Endangered on the IUCN Red List since 2000, as the population severely declined. White-rumped vultures die of kidney failure caused by diclofenac poisoning.[1]In the 1980s, the global population was estimated at several million individuals, and it was thought to be \"the most abundant large bird of prey in the world\".[3] As of 2021, the global population was estimated at less than 6,000 mature individuals.[1]\n"
+    }
+  },
+  {
+    "SciName": "Alligator mississippiensis",
+    "result": {
+      "status": "ok",
+      "name": "American alligator",
+      "description": "The American alligator (Alligator mississippiensis), sometimes referred to colloquially as a gator or common alligator, is a large crocodilian reptile native to the Southeastern United States. It is one of the two extant species in the genus Alligator, and is probably the largest species within its family Alligatoridae; it is larger than the only other living alligator species, the Chinese alligator."
+    }
+  },
+  {
+    "SciName": "Pycnonotus nigricans",
+    "result": {
+      "status": "ok",
+      "name": "African red-eyed bulbul",
+      "description": "The African red-eyed bulbul or black-fronted bulbul (Pycnonotus nigricans) is a species of songbird in the family Pycnonotidae.It is found in south-western Africa.\nIts natural habitats are dry savanna, subtropical or tropical dry shrubland, and riverine scrub.[1][2][3] It feeds on fruit (including Ficus), flowers, nectar, and insects.[2][3]\n"
+    }
+  },
+  {
+    "SciName": "Lepus townsendii",
+    "result": {
+      "status": "ok",
+      "name": "White-tailed jackrabbit",
+      "description": "The white-tailed jackrabbit (Lepus townsendii), also known as the prairie hare and the white jack, is a species of hare found in western North America. Like all hares and rabbits, it is a member of the family Leporidae of order Lagomorpha. It is a solitary individual except where several males court a female in the breeding season. Litters of four to five young are born in a form, a shallow depression in the ground, hidden among vegetation. This jackrabbit has two described subspecies: L. townsendii townsendii occurring west of the Rocky Mountains and L. townsendii campanius occurring east of the Rocky Mountains.[2]"
+    }
+  },
+  {
+    "SciName": "Ramphastos tucanus",
+    "result": {
+      "status": "ok",
+      "name": "White-throated toucan",
+      "description": "The white-throated toucan (Ramphastos tucanus) is a near-passerine bird in the family Ramphastidae found in South America throughout the Amazon Basin including the adjacent Tocantins and Araguaia River drainage. It prefers tropical humid forest, but also occurs in woodland and locally in riverine forest within cerrado.This bird can be found in Bolivia in the  Beni Departement, notably in the city of Riberalta and in the close by Aquicuana Reserve.\n"
+    }
+  },
+  {
+    "SciName": "Varanus sp.",
+    "result": {
+      "status": "ok",
+      "name": "Varanasi",
+      "description": "Varanasi (Vārāṇasī; [ʋaːˈraːɳəsi]) is a city on the Ganges river in northern India that has a central place in pilgrimage, death, and mourning in the Hindu world,[11][12][13] even as the traditions are transformed in the face of modernization, generational changes and emigration.[14][15]  The city has a syncretic tradition of Muslim artisanship that underpins its tourism.[16][17]  The name Varanasi was officially so revived after 1947,[18]  but the city is still widely known by its earlier name Banaras or Benares (Banāras; [bəˈnaːrəs] (listen)),[19][20]  and its ancient name Kashi.[21][22] Located in the middle-Ganges valley in the southeastern part of the state of Uttar Pradesh, Varanasi lies on the left bank of the river.  It is 692 kilometres (430 mi) to the southeast of India's capital New Delhi, 320 kilometres (200 mi) south-east of the state capital, Lucknow, and 121 kilometres (75 mi) east of Allahabad, another Hindu pilgrimage site.  "
+    }
+  },
+  {
+    "SciName": "Bucephala clangula",
+    "result": {
+      "status": "ok",
+      "name": "Common goldeneye",
+      "description": "The common goldeneye or simply goldeneye (Bucephala clangula) is a medium-sized sea duck of the genus Bucephala, the goldeneyes. Its closest relative is the similar Barrow's goldeneye.[2] The genus name is derived from the Ancient Greek boukephalos (\"bullheaded\", from bous, \"bull \" and kephale, \"head\"), a reference to the bulbous head shape of the bufflehead. The species name is derived from the Latin clangere (\"to resound\").[3]"
+    }
+  },
+  {
+    "SciName": "Microcebus murinus",
+    "result": {
+      "status": "ok",
+      "name": "Gray mouse lemur",
+      "description": "The gray mouse lemur (Microcebus murinus), grey mouse lemur or lesser mouse lemur, is a small lemur, a type of strepsirrhine primate, found only on the island of Madagascar. Weighing 58 to 67 grams (2.0 to 2.4 oz), it is the largest of the mouse lemurs (genus Microcebus), a group that includes the smallest primates in the world.  The species is named for its mouse-like size and coloration and is known locally (in Malagasy) as tsidy, koitsiky, titilivaha, pondiky, and vakiandry.  The gray mouse lemur and all other mouse lemurs are considered cryptic species, as they are nearly indistinguishable from each other by appearance.  For this reason, the gray mouse lemur was considered the only mouse lemur species for decades until more recent studies began to distinguish between the species."
+    }
+  },
+  {
+    "SciName": "Bettongia penicillata",
+    "result": {
+      "status": "ok",
+      "name": "Woylie",
+      "description": "The woylie or  brush-tailed bettong (Bettongia penicillata) is an extremely rare, small marsupial, belonging to the genus Bettongia, that is endemic to Australia. There are two subspecies: B. p. ogilbyi, and the now extinct B. p. penicillata."
+    }
+  },
+  {
+    "SciName": "Coluber constrictor",
+    "result": {
+      "status": "ok",
+      "name": "Eastern racer",
+      "description": "The eastern racer (Coluber constrictor) is a species of nonvenomous snake in the family Colubridae. The species is endemic to North America and Central America. Eleven subspecies, including the nominotypical subspecies, are recognized, which as a group are commonly referred to as the eastern racers. The species is monotypic in the genus Coluber."
+    }
+  },
+  {
+    "SciName": "Felis rufus",
+    "result": {
+      "status": "ok",
+      "name": "Bobcat",
+      "description": "The bobcat (Lynx rufus), also known as the red lynx, is a medium-sized cat native to North America. It ranges from southern Canada through most of the contiguous United States to Oaxaca in Mexico. It is listed as Least Concern on the IUCN Red List since 2002, due to its wide distribution and large population. Although it has been hunted extensively both for sport and fur, populations have proven stable, though declining in some areas.[1]"
+    }
+  }
+]
